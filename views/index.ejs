@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>short-url</title>
+
+    <style>
+        body{
+            background-color: rgb(243, 204, 235);
+        }
+    </style>
+</head>
+<body>
+    <h1>URL SHORTNER</h1>
+    <p>Welcome to our URL Shortener project! Our website offers a convenient and efficient way to shorten long and cumbersome URLs into shorter, more manageable links. Whether you need to share a link on social media, in emails, or any other platform, our URL Shortener tool is here to simplify the process.
+
+        With our user-friendly interface, you can easily enter your long URL, and within seconds, our system will generate a shortened version that redirects to the original destination. This shortened link is not only easier to share but also helps track click statistics and gather valuable insights about the performance of your shared links.</p>
+        <h3>Key Features:</h3>
+        <ul>Quick and Reliable: Our URL Shortener service swiftly generates short links for your long URLs, ensuring a seamless user experience.</ul>
+        <ul>Customizable Links: For personalization and branding purposes, you have the option to create custom aliases or vanity URLs that reflect your unique identity or the content you're sharing.</ul>
+        <ul>Click Tracking and Analytics: Gain valuable insights into the performance of your shortened links. Our platform provides comprehensive analytics, including click counts, geographic data, referrers, and more.</ul>
+        <br>
+        <br>
+        <form action="/shortUrls" method="POST" class="my-4 form-inline">
+            <label for="fullUrl" class="sr-only">Url</label>
+            <input required placeholder="Url" type="url" name="fullUrl" id="fullUrl"  >
+            <button class="btn btn-success" type="submit">Submit</button>
+        </form>
+    <table class="table table-striped table-responsive">
+        <thead>
+          <tr>
+            <th>Full URL</th>
+            <th>Short URL</th>
+            <th>Clicks</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% shortUrls.forEach(shortUrl => { %>
+                <tr>
+                    <td><a href="<%= shortUrl.full %>"></a></td>
+                    <td><a href="<%= shortUrl.short%>"><%= shortUrl.short%></a></td>
+                    <td><%= shortUrl.clicks %></td>
+                  </tr>
+
+            <% }) %>
+            
+          
+        </tbody>
+      </table>
+</body>
+</html>
